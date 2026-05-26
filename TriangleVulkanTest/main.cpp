@@ -19,13 +19,20 @@ public:
 
 private:
     GLFWwindow* window;
+
     void initWindow() {
-         glfwInit();
+        glfwInit();
 
-         glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
-         glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
+        glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
+        glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
 
-         window = glfwCreateWindow(WIDTH, HEIGHT, "Vulkan", nullptr, nullptr);
+        window = glfwCreateWindow(
+            WIDTH,
+            HEIGHT,
+            "Vulkan",
+            nullptr,
+            nullptr
+        );
     }
 
     void initVulkan() {
@@ -34,26 +41,25 @@ private:
 
     void mainLoop() {
         while (!glfwWindowShouldClose(window)) {
-            glfwPollEvents();  
+            glfwPollEvents();
         }
     }
 
     void cleanup() {
         glfwDestroyWindow(window);
-
         glfwTerminate();
     }
 };
 
 int main() {
-   HelloTriangleApplication app;
+    HelloTriangleApplication app;
 
-   try {
-       app.run();
-   } catch (const std::exception& e) {
-       std::cerr << e.what() << std::endl;
-       return EXIT_FAILURE;
-   }
-   
-   return EXIT_SUCCESS;
+    try {
+        app.run();
+    } catch (const std::exception& e) {
+        std::cerr << e.what() << std::endl;
+        return EXIT_FAILURE;
+    }
+
+    return EXIT_SUCCESS;
 }
