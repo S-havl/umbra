@@ -49,6 +49,7 @@ private:
         glfwTerminate();
     }
 
+    // Create an instance
     void createInstance() {
         VkApplicationInfo appInfo{};
         appInfo.sType = VK_STRUCTURE_TYPE_APPLICATION_INFO;
