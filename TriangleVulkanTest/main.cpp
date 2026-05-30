@@ -3,6 +3,8 @@
 
 #include <iostream>
 #include <stdexcept>
+#include <vector>
+#include <cstring>
 #include <cstdlib>
 
 const uint32_t WIDTH = 800;
@@ -61,6 +63,10 @@ private:
 
     // Create an instance
     void createInstance() {
+        if (enableValidationLayers && !checkValidationLayerSupport()) {
+            throw std::runtime_error("validation layers requested, but no available!");
+        }
+
         VkApplicationInfo appInfo{};
         appInfo.sType = VK_STRUCTURE_TYPE_APPLICATION_INFO;
         appInfo.pApplicationName = "Hello Triangle";
@@ -86,6 +92,31 @@ private:
         if (vkCreateInstance(&createInfo, nullptr, &instance) != VK_SUCCESS) {
             throw std::runtime_error("failed to create instance!"); 
         } 
+    }
+
+    bool checkValidationLayerSupport() {
+        uint32_t layerCount;
+        vkEnumerateInstanceLayerProperties(&layerCount, nullptr);
+
+        std::vector<VkLayerProperties> availableLayers(layerCount);
+        vkEnumerateInstanceLayerProperties(&layerCount, availableLayers.data());
+
+        for (const char* layerName : validationLayers) {
+            bool layerFound = false;
+
+            for (const auto& layerProperties : availableLayers) {
+                if (strcmp(layerName, layerProperties.layerName) == 0) {
+                    layerFound = true;
+                    break;
+                }
+            }
+
+            if (!layerFound) {
+                return false;
+            }
+        }
+
+        return true; 
     }
 
 };
