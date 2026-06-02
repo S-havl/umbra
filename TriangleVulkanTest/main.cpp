@@ -61,7 +61,6 @@ private:
         glfwTerminate();
     }
 
-    // Create an instance
     void createInstance() {
         if (enableValidationLayers && !checkValidationLayerSupport()) {
             throw std::runtime_error("validation layers requested, but no available!");
