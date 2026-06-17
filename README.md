@@ -1,6 +1,5 @@
 # UMBRA
-Game engine from scratch by me
-Vulkan
+Game engine created with Vulkan
 
 ## Vulkan Test
 
