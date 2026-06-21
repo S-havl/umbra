@@ -1,5 +1,5 @@
 # UMBRA
-Game engine created with Vulkan
+Software-rendered game engine
 
 # License
 
