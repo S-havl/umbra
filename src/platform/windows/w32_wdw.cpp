@@ -7,7 +7,7 @@
 LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
-    const wchar_t CLASS_NAME[] = L"Sample Window class";
+    const wchar_t CLASS_NAME[] = L"Umbra Window class";
 
     WNDCLASS wc = { };
     wc.lpfnWndProc   = WindowProc;
